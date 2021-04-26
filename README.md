@@ -1,4 +1,7 @@
-# semver_git_alias
+# lakruzz/semver_git_alias
+
+[![image](https://user-images.githubusercontent.com/155492/116107040-f1707280-a6b2-11eb-825b-287ae1c31914.png)](https://www.inc-inc.dk/stories/git-aliases)
+
 Implementing support for semantic versioning using only git aliases
 
 Original file is [`.gitconfig`](https://raw.githubusercontent.com/lakruzz/semver_git_alias/main/.gitconfig) in the [lakruzz/semver_git_alias](https://github.com/lakruzz/semver_git_alias) repo. Everything that goes on in this file is described in detail in my blog [Git Aliases](https://www.inc-inc.dk/stories/git-aliases).
