@@ -1,6 +1,7 @@
 # lakruzz/semver_git_alias
 
-[![image](https://user-images.githubusercontent.com/155492/116107040-f1707280-a6b2-11eb-825b-287ae1c31914.png)](https://www.inc-inc.dk/stories/git-aliases)
+[![image](https://user-images.githubusercontent.com/155492/116517998-0249ff80-a8d0-11eb-80b0-1018ab1a63a8.png)
+](https://www.inc-inc.dk/stories/git-aliases)
 
 Implementing support for semantic versioning using only git aliases
 
