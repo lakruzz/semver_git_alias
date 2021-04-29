@@ -9,6 +9,12 @@
 # run:
 #   git repo-config-to-global
 #
+# NOTE:
+# repo-config-to-global is created so it won't overwrite any settings at your global level -
+# should there be a name clash, So if you want to use it to update existing settings, clean up first
+# You can run:
+#   for setting in $(git config --file `git root`/.gitconfig --list --name-only); do git config --global --unset $setting; done;
+
 [alias]
   tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
   semver = "!f() { ALLSEMVERS=`git tag | grep -Eo '\\d+\\.\\d+\\.\\d+'` || ALLSEMVERS=`git config --get semver.initial`; echo $ALLSEMVERS | sort | tail -1; }; f"
