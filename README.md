@@ -31,3 +31,6 @@ That will safely copy everything to  `.gitconfig` your home folder. (the one tha
 - Linux
 - Unix
 - ...
+
+# Contribute
+Use the GitHub issues to comment and share your own alias gems.
