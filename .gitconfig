@@ -5,15 +5,16 @@
 #    git config --local include.path ./../.gitconfig
 #
 # Hereafter all the git aliases will be availbale to you, in the context of that particular repository
-# If you want them to be globally accessible, then CD into the repo that contains this file and 
+# If you want them to be globally accessible, then CD into the repo that contains this file and
 # run:
 #   git repo-config-to-global
 #
 [alias]
-  semver = "!f() { git tag | grep -Eo '\\d+\\.\\d+\\.\\d+' | sort | tail -1; }; f"
-  bumpsemver = "!f(){ PREFIX=$(git config --global --get semver.prefix); if [ -z \"$2\" ]; then MSG=\"-m \\\"$1 bump on `git semver`\"\\\"; else MSG=\"-m  \\\"$2\\\"\"; fi; levels=(`echo $(git semver) | tr '.' ' '`); if [ '_--major' == _$1 ]; then echo git tag -a $MSG $PREFIX$((${levels[0]}+1)).0.0; elif [ '_--minor' == _$1 ]; then echo git tag -a $MSG $PREFIX${levels[0]}.$((${levels[1]}+1)).0; elif [ '_--patch' == _$1 ]; then echo git tag -a $MSG $PREFIX${levels[0]}.${levels[1]}.$((${levels[2]}+1)); else echo 'Usage: git bumpsemver  --major|--minor|--patch [msg]\\n\\nGenerates the git command to run.\\nTo set the tag run bumpsemver inside an eval $(...) like this example:\\n    eval $(git bumpsemver --minor \"this will be the comment\")'; fi;  }; f"
-  root = rev-parse --show-toplevel
   tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
+  semver = "!f() { ALLSEMVERS=`git tag | grep -Eo '\\d+\\.\\d+\\.\\d+'` || ALLSEMVERS=`git config --get semver.initial`; echo $ALLSEMVERS | sort | tail -1; }; f"
+	bumpsemver = "!f(){ PREFIX=$(git config --global --get semver.prefix); if [ -z \"$2\" ]; then MSG=\"-m \\\"$1 bump on `git semver`\"\\\"; else MSG=\"-m  \\\"$2\\\"\"; fi; levels=(`echo $(git semver) | tr '.' ' '`); if [ '_--major' == _$1 ]; then echo git tag -a $MSG $PREFIX$((${levels[0]}+1)).0.0; elif [ '_--minor' == _$1 ]; then echo git tag -a $MSG $PREFIX${levels[0]}.$((${levels[1]}+1)).0; elif [ '_--patch' == _$1 ]; then echo git tag -a $MSG $PREFIX${levels[0]}.${levels[1]}.$((${levels[2]}+1)); else echo 'Usage: git bumpsemver  --major|--minor|--patch [msg]\\n\\nGenerates the git command to run. If you omit\\nthe [msg] a clever one will be generated for you.\\nTo execute it run it in an eval  like this example:\\n\\n    eval $(git bumpsemver --minor \"this will be the comment\")'; fi;  }; f"
+  root = rev-parse --show-toplevel
   repo-config-to-global = "!f(){ for f in $(git config --file `git root`/.gitconfig --list --name-only); do git config --global --get $f > /dev/null || git config --global $f \"$(git config --file `git root`/.gitconfig --get $f)\"; done; }; f"
 [semver]
   prefix = v
+  initial = 0.0.0
