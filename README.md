@@ -15,18 +15,19 @@ Copy [`.gitconfig`](https://raw.githubusercontent.com/lakruzz/semver_git_alias/m
 git config --local include.path ./../.gitconfig
 ```
 
-Hereafter all the git aliases will be availbale to you, but at this time only in the context of that particular repository. If you want them to be globally accessible, then CD into the repo that contains this file and run:
+Hereafter all the git aliases will be availbale to you, but only in the context of that particular repository where you copied them to. If you also want them to be globally accessible, then CD into the repo that contains this file and run:
 
 ```bash
 git repo-config-to-global
 ```
 
-That will safely copy  everything to  `.gitconfig` your home folder. (the one thats read by `git config --global ...`);
+That will safely copy everything to  `.gitconfig` your home folder. (the one thats read by `git config --global ...`);
 
 # Disclaimer
-...only works on *nix style OS, such as:
+...only works on *nix style OS such as:
 
 - MacOs
 - Git bash
 - Linux
 - Unix
+- ...
